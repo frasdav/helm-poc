@@ -8,8 +8,6 @@ const templates = [
   ['openshift-secret-template-element', '_secret.tpl'],
 ];
 
-// const secretName = 'vsts-tokens';
-
 const bond = (template) => {
   fs.copyFileSync(
     path.join(__dirname, '.pas', template[0], template[1]),
