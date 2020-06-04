@@ -1,0 +1,45 @@
+secrets:
+  vstsTokens:
+    name: vsts-tokens
+    stringData:
+      vstsPat: 123
+      vstsPatRo: 456
+deployments:
+  buildAgentsNonProd:
+    name: buildAgentsNonProd
+    compoundName: azure-devops-agents-compound
+    compoundVersion: 1.0.0
+    replicaCount: 5
+    labels:
+      pool: buildAgentsNonProd
+    env:
+      - name: VSTS_POOL
+        value: buildAgentsNonProd
+      - name: VSTS_URL
+        value: https://dev.azure.com/contoso
+    envFromSecrets:
+      - name: VSTS_PAT
+        secretKeyRefName: null
+        secretKeyRefKey: vstsPat
+      - name: VSTS_PAT_RO
+        secretKeyRefName: null
+        secretKeyRefKey: vstsPatRo
+  buildAgentsProd:
+    name: buildAgentsProd
+    compoundName: azure-devops-agents-compound
+    compoundVersion: 1.0.0
+    replicaCount: 3
+    labels:
+      pool: buildAgentsProd
+    env:
+      - name: VSTS_POOL
+        value: buildAgentsProd
+      - name: VSTS_URL
+        value: https://dev.azure.com/contoso
+    envFromSecrets:
+      - name: VSTS_PAT
+        secretKeyRefName: null
+        secretKeyRefKey: vstsPat
+      - name: VSTS_PAT_RO
+        secretKeyRefName: null
+        secretKeyRefKey: vstsPatRo

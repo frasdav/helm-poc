@@ -1,0 +1,7 @@
+pools:
+  - name: buildAgentsNonProd
+    size: 5
+    org: contoso
+  - name: buildAgentsProd
+    size: 3
+    org: contoso

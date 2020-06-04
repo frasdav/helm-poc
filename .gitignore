@@ -1,0 +1,4 @@
+.vscode
+node_modules
+helm/azure-devops-agents/templates/*.tpl
+output.yml
